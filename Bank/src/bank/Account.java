@@ -61,7 +61,8 @@ public void approve(String accountNumber)
 public void withdraw(double ammount)
 {
 	if(approved&&this.balance>0) {
-	balance = balance - ammount;
+	this.balance = this.balance - ammount;
+	System.out.println("Your new balance is: " + this.balance);
 	}
 	else
 	{

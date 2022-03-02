@@ -2,9 +2,9 @@ package bank;
 
 import java.util.Scanner;
 
-public class bankEmployeeI extends Data{
+public class BankAdmin extends Data{
 	private static final String empPasscode = "123321abc";
-	private static final String empUsername = "admin123";
+	private static final String empUsername = "employee123";
 	String option;
 	
 	public static void printAccountInfo()

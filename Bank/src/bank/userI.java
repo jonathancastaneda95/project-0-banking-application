@@ -18,7 +18,7 @@ public class userI extends Data {
 	}
 	public void createJointAccount()
 	{
-		Account ac = new Account(name, lastName,nameJ, lastNameJ, username,password,balance);
+		Account ac = new Account(this.name, this.lastName,this.nameJ, this.lastNameJ, this.username,this.password,this.balance);
 		accounts.add(ac);
 	}
 	
@@ -80,14 +80,14 @@ public class userI extends Data {
 			String tempPass = s.nextLine();
 			// check to see if pass word is correct
 			System.out.println("Please enter you initial deposit ammount");
-			balance= Integer.parseInt(s.nextLine());
+			this.balance= Integer.parseInt(s.nextLine());
 			
-			tempName=name;
-			tempLN= lastName;
-			tempUN=username;
-			tempPass=password;
-			tempJname= nameJ;
-			tempJlastname=lastNameJ;
+			this.name= tempName;
+			this.lastName=tempLN;
+			this.username=tempUN;
+			this.password=tempPass;
+			this.nameJ=tempJname;
+			this.lastNameJ=tempJlastname;
 			
 			createJointAccount();
 			
