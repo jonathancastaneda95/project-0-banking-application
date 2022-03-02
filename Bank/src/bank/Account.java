@@ -1,16 +1,16 @@
 package bank;
 
 public class Account extends Data{
-private String accountNumber;
+public String accountNumber;
 public String name;
 public String lastName;
 public String nameJoint;
 public String lastNameJoint;
-private boolean approved = false;
+public boolean approved = false;
 public double balance;
 public String userN;
 private String password;
-private boolean active = false;
+public boolean active = false;
 
 
 
