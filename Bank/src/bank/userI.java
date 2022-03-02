@@ -13,7 +13,7 @@ public class userI extends Data {
 	
 	public void createAccount()
 	{
-		Account ac = new Account(name, lastName,username,password,balance);
+		Account ac = new Account(this.name, this.lastName,this.username,this.password,this.balance);
 		accounts.add(ac);
 	}
 	public void createJointAccount()
@@ -26,7 +26,7 @@ public class userI extends Data {
 	public void run(Scanner s)
 	{
 		System.out.println("Hello, to create an account, please enter your first name");
-		String tempName = s.nextLine().toUpperCase();
+		String tempName = s.nextLine();
 		//System.out.println(tempName);
 		
 		System.out.println("Please enter your last name");
@@ -48,18 +48,18 @@ public class userI extends Data {
 		String tempPass = s.nextLine();
 		// check to see if pass word is correct
 		System.out.println("Please enter you initial deposit ammount");
-		balance= Integer.parseInt(s.nextLine());
+		this.balance= Integer.parseInt(s.nextLine());
 		
-		tempName=name;
-		tempLN= lastName;
-		tempUN=username;
-		tempPass=password;
+		this.name= tempName;
+		this.lastName= tempLN;
+		this.username=tempUN;
+		this.password=tempPass;
 		
 		createAccount();
 		
 		
-		for(Account obj: accounts)
-		System.out.println(obj.balance);
+//		for(Account obj: accounts)
+//		System.out.println(obj.balance);
 		
 		
 		}
@@ -95,7 +95,8 @@ public class userI extends Data {
 				System.out.println(obj.balance);
 		}
 		
-		
+		return;
 	}
+	
 	
 }

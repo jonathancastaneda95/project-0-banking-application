@@ -47,6 +47,10 @@ Account (String name,String lastName, String nameJoint,String lastNameJoint, Str
 
 
 // Methods;
+
+public String getPassword() {
+	return this.password;
+}
 public void approve(String accountNumber)
 {
 	approved = true;
@@ -56,14 +60,20 @@ public void approve(String accountNumber)
 }
 public void withdraw(double ammount)
 {
-	if(approved) {
+	if(approved&&this.balance>0) {
 	balance = balance - ammount;
 	}
+	else
+	{
+		System.out.println("Not enough funds, please try again");
+	}
+	return;
 }
 public void deposit(double ammount)
 {
 	if(approved) {
 	balance = balance + ammount;
 	}
+	return;
 }
 }
