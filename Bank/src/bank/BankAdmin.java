@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class BankAdmin extends Data{
 	private static final String empPasscode = "123321abc";
-	private static final String empUsername = "employee123";
+	private static final String empUsername = "admin123";
 	String option;
 	
 	public static void printAccountInfo()
@@ -64,7 +64,7 @@ public class BankAdmin extends Data{
 			else
 			{
 				System.out.println("Account not found, please try again");
-				apprroveAccount();
+				//apprroveAccount();
 			}
 		}
 		return;
@@ -89,8 +89,9 @@ public class BankAdmin extends Data{
 				System.out.println("Account not found or not active please try again");
 				withdraw();
 			}
-			return;
+			
 		}
+		return;
 	}
 	public static void deposit ()
 	{
@@ -126,14 +127,17 @@ public class BankAdmin extends Data{
 		
 		for(Account tfrom: accounts)
 		{
+			if (tfrom != null) {
+				System.out.println(tfrom.accountNumber);
+			}
 			if (tempANfrom.equals(tfrom.accountNumber)&& tfrom.approved)
 			{
 				firstAccountFound = true;
 			}
 			else
 			{
-				System.out.println("Account to transfer from not found or not active please try again");
-				transfer();
+				System.out.println("Account to transfer from not found or not active please try again ");
+				//transfer();
 			}
 			if(firstAccountFound)
 			{
@@ -153,7 +157,7 @@ public class BankAdmin extends Data{
 						else
 						{
 							System.out.println("Account to tranfer to not found or not active please try again");
-							transfer();
+							//transfer();
 
 						}
 					}
@@ -173,6 +177,7 @@ public class BankAdmin extends Data{
 	
 	public static void runEmp(Scanner s)
 	{
+		
 		System.out.println("Please enter admin username ");
 		String tempEmpUN= s.nextLine();
 		System.out.println("Please enter admin passcode");
@@ -185,10 +190,11 @@ public class BankAdmin extends Data{
 		else
 		{
 			System.out.println("User name and passcode not correct try again");
+			
 			System.out.println("----------------");
 			System.out.println("----------------");
-
-			runEmp(s);
+			
+			return;
 		}
 		return;
 	}

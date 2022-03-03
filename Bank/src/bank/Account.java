@@ -38,7 +38,15 @@ Account (String name,String lastName, String nameJoint,String lastNameJoint, Str
 	this.balance=balance;
 	
 }
-
+Account (String name,String lastName, String userN, String password, double balance, boolean approved)
+{
+	this.name = name;
+	this.lastName=lastName;
+	this.userN=userN;
+	this.password=password;
+	this.balance=balance;
+	this.approved=approved;
+}
 
 
 

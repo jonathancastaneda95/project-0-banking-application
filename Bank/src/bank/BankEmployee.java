@@ -11,7 +11,7 @@ public class BankEmployee extends Data{
 
 	public void runEmp(Scanner emp)
 	{
-		System.out.println("Please enter admin username ");
+		System.out.println("Please enter employee username ");
 		String tempEmployeeUN= emp.nextLine();
 		System.out.println("Please enter admin passcode");
 		String tempEmployeePass= emp.nextLine();
