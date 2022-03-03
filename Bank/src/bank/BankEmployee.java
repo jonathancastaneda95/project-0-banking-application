@@ -106,7 +106,7 @@ public class BankEmployee extends Data{
 				System.out.println("Last Name of Joint holder: "+ap.lastNameJoint);
 				System.out.println("Account number: "+ap.accountNumber);
 				System.out.println("Account balance: "+ap.balance);
-				System.out.println("Account Status: "+ap.approved);
+				System.out.println("Account Approved?: "+ap.approved);
 				System.out.println("Account username: "+ap.userN);
 
 			}

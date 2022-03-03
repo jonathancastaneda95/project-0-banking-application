@@ -25,7 +25,7 @@ public class BankAdmin extends Data{
 				System.out.println("Last Name of Joint holder: "+ap.lastNameJoint);
 				System.out.println("Account number: "+ap.accountNumber);
 				System.out.println("Account balance: "+ap.balance);
-				System.out.println("Account Status: "+ap.approved);
+				System.out.println("Account Approved?: "+ap.approved);
 				System.out.println("Account username: "+ap.userN);
 
 			}
@@ -106,6 +106,7 @@ public class BankAdmin extends Data{
 				double dAmmount = wd.nextDouble();
 				wac.balance= wac.balance+dAmmount;
 				System.out.println("The new balance for account: " + wac.accountNumber + " is: " +wac.balance);
+				return;
 			}
 			else
 			{
@@ -118,7 +119,8 @@ public class BankAdmin extends Data{
 	public static void transfer()
 	
 	{
-		boolean  firstAccountFound = false;
+		boolean  firstAccountFound =false;
+		boolean secondAccountFound=false;
 		Scanner tra=new Scanner(System.in);
 		System.out.println("Please enter the account number from which you wish to transfer from");
 		String tempANfrom = tra.nextLine();
@@ -127,38 +129,34 @@ public class BankAdmin extends Data{
 		
 		for(Account tfrom: accounts)
 		{
-			if (tfrom != null) {
-				System.out.println(tfrom.accountNumber);
-			}
-			if (tempANfrom.equals(tfrom.accountNumber)&& tfrom.approved)
-			{
+			
+			if (tempANfrom.equals(tfrom.accountNumber)&& tfrom.approved){
 				firstAccountFound = true;
-			}
-			else
-			{
-				System.out.println("Account to transfer from not found or not active please try again ");
-				//transfer();
+			}else{
+				firstAccountFound=false;
 			}
 			if(firstAccountFound)
 			{
 				System.out.println("Please enter the amount you would like to transfer");
-				double tempAmmountfrom = tra.nextDouble();
+				double tempAmmountfrom = Double.parseDouble(tra.nextLine());
 				double tempBalance = tfrom.balance-tempAmmountfrom;
 				if(tempBalance > 0 )
 				{
-					tfrom.balance=tempBalance;
+					
 					for(Account tto: accounts)
 					{
-						if (tempANfrom.equals(tto.accountNumber)&& tto.approved)
+						if (tempANto.equals(tto.accountNumber)&& tto.approved)
 						{
+							secondAccountFound=true;
+							tfrom.balance=tempBalance;
 							tto.balance = tto.balance+tempAmmountfrom;
 							System.out.println("The new balance for " + tto.name +" " + tto.lastName + "is: " + tto.balance);
+							System.out.println("The new balance for " +tfrom.name +": " + tfrom.balance)  ;
+							return;
 						}
 						else
 						{
-							System.out.println("Account to tranfer to not found or not active please try again");
-							//transfer();
-
+							secondAccountFound = false;
 						}
 					}
 					
@@ -170,7 +168,10 @@ public class BankAdmin extends Data{
 			}
 		}
 		
-		return;
+		System.out.println("Account transfer not succesful, please try again");
+		transfer();
+
+		
 	}
 	
 	

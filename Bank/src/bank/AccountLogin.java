@@ -29,13 +29,13 @@ public class AccountLogin extends Data {
 				case "1":
 					System.out.println("Please enter withdraw ammount");
 					double tempW= loginScan.nextDouble();
-					log.withdraw(tempW);;
-					break;
+					log.withdraw(tempW);
+					return;
 				case "2":  
 					System.out.println("Please enter deposit ammount");
 					double tempD= loginScan.nextDouble();
 					log.deposit(tempD);
-					break;
+					return;
 				case "3": System.out.println(log.name);
 				System.out.println("Name: " + log.name);
 				System.out.println("Last name: " + log.lastName);
@@ -43,9 +43,9 @@ public class AccountLogin extends Data {
 				System.out.println("Last Name of Joint holder: "+log.lastNameJoint);
 				System.out.println("Account number: "+log.accountNumber);
 				System.out.println("Account balance: "+log.balance);
-				System.out.println("Account Status: "+log.approved);
+				System.out.println("Account Approved?: "+log.approved);
 				System.out.println("Account username: "+log.userN);
-					break;
+					return;
 				default: System.out.println("entry not valid try again"); login();
 					
 				
@@ -54,9 +54,11 @@ public class AccountLogin extends Data {
 			{
 				System.out.println("Account not approved, please wait for bank to approve");
 			}
-				return;
+				
 			}
 		}
+		
+		System.out.println("Login unsuccesful");
 	}
 
 }

@@ -6,11 +6,11 @@ import java.util.Scanner;
 public class Main {
 public static void main(String[] args) {
 	Scanner s = new Scanner(System.in);
-	Account a = new Account("Jonathan","Castaneda", "jcstn", "password", 150);
+	Account a = new Account("Jonathan","Castaneda", "jcstn", "password", 150, true,"123456");
 	Data.accounts.add(a);
-	Account b = new Account("John","Smith", "jsmith", "password", 150);
+	Account b = new Account("John","Smith", "jsmith", "password", 150,true, "654321");
 	Data.accounts.add(b);
-	Account c = new Account("David","Smith", "dsmith", "password", 150);
+	Account c = new Account("David","Smith", "dsmith", "password", 150, true,"987654");
 	Data.accounts.add(c);
 	while(true)
 	{

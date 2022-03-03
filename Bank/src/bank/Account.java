@@ -38,7 +38,7 @@ Account (String name,String lastName, String nameJoint,String lastNameJoint, Str
 	this.balance=balance;
 	
 }
-Account (String name,String lastName, String userN, String password, double balance, boolean approved)
+Account (String name,String lastName, String userN, String password, double balance, boolean approved, String accounNumber)
 {
 	this.name = name;
 	this.lastName=lastName;
@@ -46,6 +46,7 @@ Account (String name,String lastName, String userN, String password, double bala
 	this.password=password;
 	this.balance=balance;
 	this.approved=approved;
+	this.accountNumber=accounNumber;
 }
 
 
@@ -68,7 +69,7 @@ public void approve(String accountNumber)
 }
 public void withdraw(double ammount)
 {
-	if(approved&&this.balance>0) {
+	if(approved&&this.balance-ammount>0) {
 	this.balance = this.balance - ammount;
 	System.out.println("Your new balance is: " + this.balance);
 	}
@@ -81,7 +82,11 @@ public void withdraw(double ammount)
 public void deposit(double ammount)
 {
 	if(approved) {
-	balance = balance + ammount;
+	this.balance = this.balance + ammount;
+	System.out.println("Your new balance is: " + this.balance);
+	
+	}else {
+		System.out.println("account not approved, please ask admin to aprove account");
 	}
 	return;
 }
