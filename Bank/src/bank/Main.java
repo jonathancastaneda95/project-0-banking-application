@@ -6,11 +6,22 @@ import java.util.Scanner;
 public class Main {
 public static void main(String[] args) {
 	Scanner s = new Scanner(System.in);
+	Account a = new Account("Jonathan", "Castaneda", "jcstn", "password", 500, true, "123456");
+	Data.accounts.add(a);
+	Account b = new Account("Jamie", "Mullins", "jmullins", "password", 200, true, "654321");
+	Data.accounts.add(b);
+	Data.serialize();
 	
 	try {
 	while(true)
 	{
-		System.out.println("Choose 1 for admin login,2 for employee login 3 to create account, 4 to login to account");
+		System.out.println("Please choose from the following options");
+		System.out.println("__________________________");
+		System.out.println("(1) Admin Login ");
+		System.out.println("(2) Employee Login ");
+		System.out.println("(3) Create Account");
+		System.out.println("(4) Login to Account");
+		System.out.println("__________________________");
 		String mainMenu = s.nextLine();
 		switch(mainMenu)
 		{

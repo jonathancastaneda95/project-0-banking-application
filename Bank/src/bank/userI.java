@@ -16,7 +16,7 @@ public class userI extends Data {
 		Account ac = new Account(this.name, this.lastName,this.username,this.password,this.balance);
 		
 		accountsNeedApproval.add(ac);
-		//Data.serialize(ac);
+		
 
 	}
 	public void createJointAccount()
@@ -25,7 +25,7 @@ public class userI extends Data {
 		
 		accountsNeedApproval.add(ac);
 
-		//Data.serialize(ac);
+		
 
 	}
 	
@@ -88,6 +88,7 @@ public class userI extends Data {
 			// check to see if pass word is correct
 			System.out.println("Please enter you initial deposit ammount");
 			this.balance= Integer.parseInt(s.nextLine());
+			System.out.println("Thank you, account approval can take up to 24 hours");
 			
 			this.name= tempName;
 			this.lastName=tempLN;

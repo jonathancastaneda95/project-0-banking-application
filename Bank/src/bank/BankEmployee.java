@@ -34,7 +34,10 @@ public class BankEmployee extends Data{
 	public static void runEmpOptions(Scanner emp)
 	{
 		System.out.println("Please choose from the following options");
-		System.out.println("1: Approve account -- 2: to view account info");
+		System.out.println("__________________________________");
+		System.out.println("1: Approve account");
+		System.out.println("2: to view account info");
+		System.out.println("__________________________________");
 		
 		String option = emp.nextLine();
 		
@@ -93,7 +96,7 @@ public class BankEmployee extends Data{
 				System.out.println("Account has been approved");
 				Data.accountsNeedApproval.remove(ap);
 				Data.accounts.add(ap);
-				//Data.serialize(ap);
+				Data.serialize();
 				return;
 			
 			}
@@ -115,6 +118,7 @@ public class BankEmployee extends Data{
 			System.out.println("System is checking");
 			if (ap.name.equals(tempName) && ap.lastName.equals(tempLastName))
 			{
+				System.out.println("________________________________________________");
 				System.out.println("Name: " + ap.name);
 				System.out.println("Last name: " + ap.lastName);
 				System.out.println("Name of Joint holder: " + ap.nameJoint);
@@ -123,6 +127,7 @@ public class BankEmployee extends Data{
 				System.out.println("Account balance: "+ap.balance);
 				System.out.println("Account Approved?: "+ap.approved);
 				System.out.println("Account username: "+ap.userN);
+				System.out.println("________________________________________________");
 				return;
 
 			}

@@ -78,7 +78,7 @@ public class BankAdmin extends Data{
 				System.out.println("Account has been approved");
 				Data.accountsNeedApproval.remove(ap);
 				Data.accounts.add(ap);
-				//Data.serialize(ap);
+				Data.serialize();
 				return;
 			
 			}
@@ -123,7 +123,7 @@ public class BankAdmin extends Data{
 								if(wAmmount>0) {
 								wac.balance= wac.balance-wAmmount;
 								System.out.println("The new balance for account: " + wac.accountNumber + " is: " +wac.balance);
-								Data.serialize(wac);
+								Data.serialize();
 								return;
 								}
 							}
@@ -170,7 +170,7 @@ public class BankAdmin extends Data{
 						wac.balance= wac.balance+dAmmount;
 						wac.history.add("Deposit of :"+ String.valueOf(dAmmount)+" Balance: "+ String.valueOf(wac.balance));
 						System.out.println("The new balance for account: " + wac.accountNumber + " is: " +wac.balance);
-						//Data.serialize(wac);
+						Data.serialize();
 
 						return;
 					}
@@ -223,8 +223,8 @@ public class BankAdmin extends Data{
 							tto.history.add("Transfer in of :"+ String.valueOf(tempAmmountfrom)+" Balance: "+ String.valueOf(tto.balance));
 							System.out.println("The new balance for " + tto.name +" " + tto.lastName + "is: " + tto.balance);
 							System.out.println("The new balance for " +tfrom.name +": " + tfrom.balance)  ;
-							//Data.serialize(tfrom);
-							//Data.serialize(tto);
+							
+							Data.serialize();
 
 							return;
 						}
@@ -275,9 +275,15 @@ public class BankAdmin extends Data{
 	public static void runOptions(Scanner s)
 	{
 		System.out.println("Please choose from the following options");
-		System.out.println("1: Approve account -- 2: Withdraw from an account");
-		System.out.println("3-Deposit into an account -- 4: Transfer funds ");
-		System.out.println("5 View account info 6: Delete account");
+		
+		System.out.println("_______________________________");
+		System.out.println("1: Approve Account");
+		System.out.println("2: Withdraw from an account");	
+		System.out.println("3-Deposit into an account");
+		System.out.println("4: Transfer funds");
+		System.out.println("5 View account info");
+		System.out.println("6: Delete account");
+		System.out.println("_______________________________");
 		String option = s.nextLine();
 		
 		switch(option)
@@ -318,7 +324,7 @@ public class BankAdmin extends Data{
 				if(tempAN.equals(ap.accountNumber)) {
 					accounts.remove(ap);
 					System.out.println("Account has been deleted");
-					//Data.serialize(ap);
+					Data.serialize();
 				}
 				return;
 			

@@ -1,8 +1,9 @@
 package bank;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Account extends Data{
+public class Account extends Data implements Serializable  {
 public String accountNumber;
 public String name;
 public String lastName;

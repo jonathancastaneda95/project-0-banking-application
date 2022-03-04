@@ -11,6 +11,7 @@ public class AccountLogin extends Data {
 	
 	public void login()
 	{
+		System.out.println("****************************");
 		System.out.println("Please enter your username");
 		tempUN= loginScan.nextLine();
 		System.out.println("Please enter your password");
@@ -21,9 +22,14 @@ public class AccountLogin extends Data {
 			{
 			if(log.approved) {
 				System.out.println("Please choose from the following options");
-				System.out.println("1: Print History--2: Withdraw from an account");
-				System.out.println("3: Deposit into account  --4: Print account info ");
+				System.out.println("___________________________________");
+				System.out.println("1: Print History");
+				System.out.println("2: Withdraw from an account");
+				System.out.println("3: Deposit into account");
+				System.out.println("4: Print account info ");
 				System.out.println("5: Transfer funds");
+				System.out.println("___________________________________");
+
 
 				
 				String option = loginScan.nextLine();
@@ -37,7 +43,7 @@ public class AccountLogin extends Data {
 					double tempW= loginScan.nextDouble();
 					if(tempW>0) {
 					log.withdraw(tempW);
-					//Data.serialize(log);
+					Data.serialize();
 
 					return;
 					}else {
@@ -49,7 +55,7 @@ public class AccountLogin extends Data {
 							if(tempW>0) {
 							log.withdraw(tempW);
 							log.history.add("Withraw :"+ String.valueOf(tempW)+" Balance: "+ String.valueOf(tempBalance));
-							//Data.serialize(log);
+							Data.serialize();
 							return;
 							}
 						}
@@ -59,7 +65,7 @@ public class AccountLogin extends Data {
 					double tempD= loginScan.nextDouble();
 					if(tempD>0) {
 					log.deposit(tempD);
-					//Data.serialize(log);
+					Data.serialize();
 
 					return;
 					}else {
@@ -77,16 +83,20 @@ public class AccountLogin extends Data {
 							}
 						}
 					}
-				case "4": System.out.println(log.name);
-				System.out.println("Name: " + log.name);
-				System.out.println("Last name: " + log.lastName);
-				System.out.println("Name of Joint holder: " + log.nameJoint);
-				System.out.println("Last Name of Joint holder: "+log.lastNameJoint);
-				System.out.println("Account number: "+log.accountNumber);
-				System.out.println("Account balance: "+log.balance);
-				System.out.println("Account Approved?: "+log.approved);
-				System.out.println("Account username: "+log.userN);
-					return;
+				case "4":
+					System.out.println("____________________________________________________");
+					System.out.println(log.name);
+					System.out.println("Name: " + log.name);
+					System.out.println("Last name: " + log.lastName);
+					System.out.println("Name of Joint holder: " + log.nameJoint);
+					System.out.println("Last Name of Joint holder: "+log.lastNameJoint);
+					System.out.println("Account number: "+log.accountNumber);
+					System.out.println("Account balance: "+log.balance);
+					System.out.println("Account Approved?: "+log.approved);
+					System.out.println("Account username: "+log.userN);
+					System.out.println("____________________________________________________");
+
+						return;
 				case "5":
 					System.out.println("Please enter the account number you would like to transfer to");
 					String tempANto = loginScan.nextLine();
@@ -105,8 +115,7 @@ public class AccountLogin extends Data {
 							tto.history.add("Transfer in of :"+ String.valueOf(transferAmount)+" Balance: "+ String.valueOf(tto.balance));
 							System.out.println("The new balance for " + tto.name +" " + tto.lastName + "is: " + tto.balance);
 							System.out.println("The new balance for " +log.name +": " + log.balance)  ;
-							//Data.serialize(log);
-							//Data.serialize(tto);
+							Data.serialize();
 
 							return;
 						}

@@ -11,12 +11,12 @@ public class Data {
 static Set<Account> accounts = new HashSet<Account>();
 static ArrayList<Account> accountsNeedApproval= new ArrayList<>();
 
-public static void serialize(Account a) {
+public static void serialize() {
 	try
 	{
-		FileOutputStream fileOut = new FileOutputStream(".src/accountDetails.ser");
+		FileOutputStream fileOut = new FileOutputStream("./src/accountDetails.ser");
 		ObjectOutputStream  out = new ObjectOutputStream(fileOut);
-		out.writeObject(a);
+		out.writeObject(accounts);
 		out.close();
 		fileOut.close();
 		
