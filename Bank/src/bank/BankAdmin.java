@@ -37,20 +37,34 @@ public class BankAdmin extends Data{
 	}
 	public static void apprroveAccount()
 	{
+		System.out.println("The following accounts need approval");
+		System.out.println("************************");
+		for (Account a:accountsNeedApproval)
+		{
+			System.out.println(a.name +" " +a.lastName + "- Username: "+ a.userN);
+		}
+		System.out.println("************************");
 		@SuppressWarnings("resource")
 		Scanner aA = new Scanner(System.in);
 		System.out.println("Please enter the first name for the account holder");
 		String tempName = aA.nextLine();
 		System.out.println("Please enter account holder's last name");
 		String tempLastName = aA.nextLine();
-		for(Account ap: accounts)
+		for(Account ap: accountsNeedApproval)
 		{
 			System.out.println("System is checking");
 			if (ap.name.equals(tempName) && ap.lastName.equals(tempLastName))
 			{
 				System.out.println("Please asign a 6 digit account number");
 				String tempAN = aA.nextLine();
-				
+				for(Account an:accounts)
+				{
+					while(an.accountNumber.equals(tempAN)) {
+						System.out.println("Account number already exists, please try again");
+						System.out.println("Please asign a 6 digit account number");
+						tempAN = aA.nextLine();
+					}
+				}
 				
 				while(tempAN.length()!= 6)
 				{
@@ -62,6 +76,9 @@ public class BankAdmin extends Data{
 				ap.accountNumber=tempAN;
 				ap.approved=true;
 				System.out.println("Account has been approved");
+				Data.accountsNeedApproval.remove(ap);
+				Data.accounts.add(ap);
+				//Data.serialize(ap);
 				return;
 			
 			}
@@ -73,6 +90,7 @@ public class BankAdmin extends Data{
 	}
 	public static void withdraw ()
 	{
+		double tempBalance;
 		@SuppressWarnings("resource")
 		Scanner wd = new Scanner(System.in);
 		System.out.println("Please enter account number for the account you with to withdraw from");
@@ -83,22 +101,39 @@ public class BankAdmin extends Data{
 			{
 				System.out.println("Please enter amount to withdraw");
 				double wAmmount = wd.nextDouble();
-				if(wAmmount>0) {
-				wac.balance= wac.balance-wAmmount;
-				System.out.println("The new balance for account: " + wac.accountNumber + " is: " +wac.balance);
-				return;
-				}else {
-					while(wAmmount<0) {
-						System.out.println("Ammount can not be less than zero");
-						System.out.println("Please enter amount to withdraw");
-						wAmmount = wd.nextDouble();
-						if(wAmmount>0) {
+				tempBalance=wac.balance-wAmmount;
+				if(tempBalance>0) {
+			
+					if(wAmmount>0)
+						{	
+				
+						//switch(tempBalance)
 						wac.balance= wac.balance-wAmmount;
+						wac.history.add("Withdraw of :"+ String.valueOf(wAmmount)+" Balance: "+ String.valueOf(wac.balance));
 						System.out.println("The new balance for account: " + wac.accountNumber + " is: " +wac.balance);
 						return;
 						}
+						else 
+						{
+							while(wAmmount<0) 
+							{
+								System.out.println("Ammount can not be less than zero");
+								System.out.println("Please enter amount to withdraw");
+								wAmmount = wd.nextDouble();
+								if(wAmmount>0) {
+								wac.balance= wac.balance-wAmmount;
+								System.out.println("The new balance for account: " + wac.accountNumber + " is: " +wac.balance);
+								Data.serialize(wac);
+								return;
+								}
+							}
+						}
 					}
-				}
+					else
+					{
+						System.out.println("Non sufficient funds");
+						withdraw();
+					}
 			}
 			else
 			{
@@ -123,6 +158,7 @@ public class BankAdmin extends Data{
 				double dAmmount = wd.nextDouble();
 				if(dAmmount>0) {
 				wac.balance= wac.balance+dAmmount;
+				wac.history.add("Deposit of :"+ String.valueOf(dAmmount)+" Balance: "+ String.valueOf(wac.balance));
 				System.out.println("The new balance for account: " + wac.accountNumber + " is: " +wac.balance);
 				return;
 				}else {
@@ -132,7 +168,10 @@ public class BankAdmin extends Data{
 						dAmmount = wd.nextDouble();
 						if(dAmmount>0) {
 						wac.balance= wac.balance+dAmmount;
+						wac.history.add("Deposit of :"+ String.valueOf(dAmmount)+" Balance: "+ String.valueOf(wac.balance));
 						System.out.println("The new balance for account: " + wac.accountNumber + " is: " +wac.balance);
+						//Data.serialize(wac);
+
 						return;
 					}
 				}
@@ -142,7 +181,7 @@ public class BankAdmin extends Data{
 			else
 			{
 				System.out.println("Account not found or not active please try again");
-				withdraw();
+				deposit();
 			}
 		}
 		return;
@@ -179,9 +218,14 @@ public class BankAdmin extends Data{
 						if (tempANto.equals(tto.accountNumber)&& tto.approved)
 						{
 							tfrom.balance=tempBalance;
+							tfrom.history.add("Transfer out of :"+ String.valueOf(tempAmmountfrom)+" Balance: "+ String.valueOf(tfrom.balance));
 							tto.balance = tto.balance+tempAmmountfrom;
+							tto.history.add("Transfer in of :"+ String.valueOf(tempAmmountfrom)+" Balance: "+ String.valueOf(tto.balance));
 							System.out.println("The new balance for " + tto.name +" " + tto.lastName + "is: " + tto.balance);
 							System.out.println("The new balance for " +tfrom.name +": " + tfrom.balance)  ;
+							//Data.serialize(tfrom);
+							//Data.serialize(tto);
+
 							return;
 						}
 						else
@@ -274,6 +318,7 @@ public class BankAdmin extends Data{
 				if(tempAN.equals(ap.accountNumber)) {
 					accounts.remove(ap);
 					System.out.println("Account has been deleted");
+					//Data.serialize(ap);
 				}
 				return;
 			

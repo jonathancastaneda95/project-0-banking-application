@@ -1,5 +1,7 @@
 package bank;
 
+import java.util.ArrayList;
+
 public class Account extends Data{
 public String accountNumber;
 public String name;
@@ -55,7 +57,13 @@ Account (String name,String lastName, String userN, String password, double bala
 
 
 
-// Methods;
+ArrayList<String> history = new ArrayList<>();
+
+public void printHistory() {
+	for (String s: history){
+		System.out.println(s);
+	}
+}
 
 public String getPassword() {
 	return this.password;

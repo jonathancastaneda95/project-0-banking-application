@@ -14,12 +14,19 @@ public class userI extends Data {
 	public void createAccount()
 	{
 		Account ac = new Account(this.name, this.lastName,this.username,this.password,this.balance);
-		accounts.add(ac);
+		
+		accountsNeedApproval.add(ac);
+		//Data.serialize(ac);
+
 	}
 	public void createJointAccount()
 	{
 		Account ac = new Account(this.name, this.lastName,this.nameJ, this.lastNameJ, this.username,this.password,this.balance);
-		accounts.add(ac);
+		
+		accountsNeedApproval.add(ac);
+
+		//Data.serialize(ac);
+
 	}
 	
 
