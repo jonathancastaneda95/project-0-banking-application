@@ -56,6 +56,8 @@ public class userI extends Data {
 		// check to see if pass word is correct
 		System.out.println("Please enter you initial deposit ammount");
 		this.balance= Integer.parseInt(s.nextLine());
+		System.out.println("Thank you, account approval can take up to 24 hours");
+		
 		
 		this.name= tempName;
 		this.lastName= tempLN;

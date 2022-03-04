@@ -137,8 +137,7 @@ public class BankAdmin extends Data{
 			}
 			else
 			{
-				System.out.println("Account not found or not active please try again");
-				withdraw();
+				
 			}
 			
 		}
@@ -180,8 +179,6 @@ public class BankAdmin extends Data{
 			}		
 			else
 			{
-				System.out.println("Account not found or not active please try again");
-				deposit();
 			}
 		}
 		return;
@@ -281,7 +278,7 @@ public class BankAdmin extends Data{
 		System.out.println("2: Withdraw from an account");	
 		System.out.println("3: Deposit into an account");
 		System.out.println("4: Transfer funds");
-		System.out.println("5: View account info");
+		System.out.println("5:1 View account info");
 		System.out.println("6: Delete account");
 		System.out.println("_______________________________");
 		String option = s.nextLine();

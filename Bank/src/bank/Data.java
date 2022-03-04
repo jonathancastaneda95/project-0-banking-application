@@ -1,7 +1,9 @@
 package bank;
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -27,5 +29,28 @@ public static void serialize() {
 		ex.printStackTrace();
 	}
 	
+}
+public static void deserialize()
+{
+	
+	try
+	{
+		FileInputStream fileIn = new FileInputStream("./src/accountDetails.ser");
+		ObjectInputStream  in = new ObjectInputStream(fileIn);
+		accounts=(HashSet) in.readObject();
+		in.close();
+		fileIn.close();
+		
+		
+	}
+	catch(IOException ex)
+	{
+		System.out.println("Exception");
+		ex.printStackTrace();
+	}
+	catch(ClassNotFoundException cnf)
+	{
+		System.out.println("Class not found");
+	}
 }
 }
