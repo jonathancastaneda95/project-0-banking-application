@@ -81,11 +81,24 @@ public class BankAdmin extends Data{
 		{
 			if (tempAN.equals(wac.accountNumber)&& wac.approved)
 			{
-				System.out.println("PLease enter amount to withdraw");
+				System.out.println("Please enter amount to withdraw");
 				double wAmmount = wd.nextDouble();
+				if(wAmmount>0) {
 				wac.balance= wac.balance-wAmmount;
 				System.out.println("The new balance for account: " + wac.accountNumber + " is: " +wac.balance);
 				return;
+				}else {
+					while(wAmmount<0) {
+						System.out.println("Ammount can not be less than zero");
+						System.out.println("Please enter amount to withdraw");
+						wAmmount = wd.nextDouble();
+						if(wAmmount>0) {
+						wac.balance= wac.balance-wAmmount;
+						System.out.println("The new balance for account: " + wac.accountNumber + " is: " +wac.balance);
+						return;
+						}
+					}
+				}
 			}
 			else
 			{
@@ -106,19 +119,33 @@ public class BankAdmin extends Data{
 		{
 			if (tempAN.equals(wac.accountNumber)&& wac.approved)
 			{
-				System.out.println("PLease enter amount to deposit");
+				System.out.println("Please enter amount to deposit");
 				double dAmmount = wd.nextDouble();
+				if(dAmmount>0) {
 				wac.balance= wac.balance+dAmmount;
 				System.out.println("The new balance for account: " + wac.accountNumber + " is: " +wac.balance);
 				return;
+				}else {
+					while(dAmmount<0) {
+						System.out.println("Ammount can not be less than zero");
+						System.out.println("Please enter amount to deposit");
+						dAmmount = wd.nextDouble();
+						if(dAmmount>0) {
+						wac.balance= wac.balance+dAmmount;
+						System.out.println("The new balance for account: " + wac.accountNumber + " is: " +wac.balance);
+						return;
+					}
+				}
+				return;
 			}
+			}		
 			else
 			{
 				System.out.println("Account not found or not active please try again");
 				withdraw();
 			}
-			return;
 		}
+		return;
 	}
 	public static void transfer()
 	
@@ -206,7 +233,7 @@ public class BankAdmin extends Data{
 		System.out.println("Please choose from the following options");
 		System.out.println("1: Approve account -- 2: Withdraw from an account");
 		System.out.println("3-Deposit into an account -- 4: Transfer funds ");
-		System.out.println("5 to view account info");
+		System.out.println("5 View account info 6: Delete account");
 		String option = s.nextLine();
 		
 		switch(option)
@@ -221,10 +248,38 @@ public class BankAdmin extends Data{
 			break;
 		case "5": printAccountInfo();
 			break;
+		case "6": deleteAccount();
+			break;
 		default: System.out.println("entry not valid try again"); runOptions(s);
 			
 		
 		}
 		return;
+	}
+	public static void deleteAccount()
+	{
+		@SuppressWarnings("resource")
+		Scanner aA = new Scanner(System.in);
+		System.out.println("Please enter the first name for the account holder");
+		String tempName = aA.nextLine();
+		System.out.println("Please enter account holder's last name");
+		String tempLastName = aA.nextLine();
+		for(Account ap: accounts)
+		{
+			System.out.println("System is checking");
+			if (ap.name.equals(tempName) && ap.lastName.equals(tempLastName))
+			{
+				System.out.println("Please enter account number to procede with deleting account");
+				String tempAN = aA.nextLine();
+				if(tempAN.equals(ap.accountNumber)) {
+					accounts.remove(ap);
+					System.out.println("Account has been deleted");
+				}
+				return;
+			
+			}
+			
+	}
+		System.out.println("Unable to delete account");
 	}
 }
