@@ -111,6 +111,7 @@ public class BankAdmin extends Data{
 						wac.balance= wac.balance-wAmmount;
 						wac.history.add("Withdraw of :"+ String.valueOf(wAmmount)+" Balance: "+ String.valueOf(wac.balance));
 						System.out.println("The new balance for account: " + wac.accountNumber + " is: " +wac.balance);
+						Data.serialize();
 						return;
 						}
 						else 
@@ -159,6 +160,7 @@ public class BankAdmin extends Data{
 				wac.balance= wac.balance+dAmmount;
 				wac.history.add("Deposit of :"+ String.valueOf(dAmmount)+" Balance: "+ String.valueOf(wac.balance));
 				System.out.println("The new balance for account: " + wac.accountNumber + " is: " +wac.balance);
+				Data.serialize();
 				return;
 				}else {
 					while(dAmmount<0) {
