@@ -9,6 +9,7 @@ public class BankAdmin extends Data{
 	
 	public static void printAccountInfo()
 	{
+		@SuppressWarnings("resource")
 		Scanner pA = new Scanner(System.in);
 		System.out.println("Please enter the first name for the account holder");
 		String tempName = pA.nextLine();
@@ -27,13 +28,16 @@ public class BankAdmin extends Data{
 				System.out.println("Account balance: "+ap.balance);
 				System.out.println("Account Approved?: "+ap.approved);
 				System.out.println("Account username: "+ap.userN);
+				return;
 
 			}
 		}
+		System.out.println("Account info not found, please try again");
 		return;
 	}
 	public static void apprroveAccount()
 	{
+		@SuppressWarnings("resource")
 		Scanner aA = new Scanner(System.in);
 		System.out.println("Please enter the first name for the account holder");
 		String tempName = aA.nextLine();
@@ -61,17 +65,15 @@ public class BankAdmin extends Data{
 				return;
 			
 			}
-			else
-			{
-				System.out.println("Account not found, please try again");
-				//apprroveAccount();
-			}
+			
 		}
+		System.out.println("Account not found, please try again");
 		return;
 
 	}
 	public static void withdraw ()
 	{
+		@SuppressWarnings("resource")
 		Scanner wd = new Scanner(System.in);
 		System.out.println("Please enter account number for the account you with to withdraw from");
 		String tempAN = wd.nextLine();
@@ -83,6 +85,7 @@ public class BankAdmin extends Data{
 				double wAmmount = wd.nextDouble();
 				wac.balance= wac.balance-wAmmount;
 				System.out.println("The new balance for account: " + wac.accountNumber + " is: " +wac.balance);
+				return;
 			}
 			else
 			{
@@ -95,6 +98,7 @@ public class BankAdmin extends Data{
 	}
 	public static void deposit ()
 	{
+		@SuppressWarnings("resource")
 		Scanner wd = new Scanner(System.in);
 		System.out.println("Please enter account number for the account you with to deposit into");
 		String tempAN = wd.nextLine();
@@ -120,7 +124,7 @@ public class BankAdmin extends Data{
 	
 	{
 		boolean  firstAccountFound =false;
-		boolean secondAccountFound=false;
+		@SuppressWarnings("resource")
 		Scanner tra=new Scanner(System.in);
 		System.out.println("Please enter the account number from which you wish to transfer from");
 		String tempANfrom = tra.nextLine();
@@ -147,7 +151,6 @@ public class BankAdmin extends Data{
 					{
 						if (tempANto.equals(tto.accountNumber)&& tto.approved)
 						{
-							secondAccountFound=true;
 							tfrom.balance=tempBalance;
 							tto.balance = tto.balance+tempAmmountfrom;
 							System.out.println("The new balance for " + tto.name +" " + tto.lastName + "is: " + tto.balance);
@@ -156,7 +159,6 @@ public class BankAdmin extends Data{
 						}
 						else
 						{
-							secondAccountFound = false;
 						}
 					}
 					

@@ -52,6 +52,7 @@ public class BankEmployee extends Data{
 	}
 	public static void apprroveAccountEmp()
 	{
+		@SuppressWarnings("resource")
 		Scanner aA = new Scanner(System.in);
 		System.out.println("Please enter the first name for the account holder");
 		String tempName = aA.nextLine();
@@ -79,17 +80,15 @@ public class BankEmployee extends Data{
 				return;
 			
 			}
-			else
-			{
-				System.out.println("Account not found, please try again");
-				apprroveAccountEmp();
-			}
+			
 		}
+		System.out.println("Account not found please try again");
 		return;
 
 	}	
 	public static void printAccountInfoEmp()
 	{
+		@SuppressWarnings("resource")
 		Scanner pA = new Scanner(System.in);
 		System.out.println("Please enter the first name for the account holder");
 		String tempName = pA.nextLine();
@@ -108,9 +107,11 @@ public class BankEmployee extends Data{
 				System.out.println("Account balance: "+ap.balance);
 				System.out.println("Account Approved?: "+ap.approved);
 				System.out.println("Account username: "+ap.userN);
+				return;
 
 			}
 		}
+		System.out.println("Account info not found, please try again");
 		return;
 	}
 }
