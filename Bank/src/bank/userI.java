@@ -32,81 +32,142 @@ public class userI extends Data {
 
 	public void run(Scanner s)
 	{
+		boolean existingAccount= false;
 		System.out.println("Hello, to create an account, please enter your first name");
 		String tempName = s.nextLine();
-		//System.out.println(tempName);
 		
 		System.out.println("Please enter your last name");
 		String tempLN= s.nextLine();
 		
 		System.out.println("Will there be a second person on the account?      enter yes or no");
 		String tempAnswer = s.nextLine();
-	
-		
-		
+
 		if(tempAnswer.equalsIgnoreCase("no"))
 		{
-		System.out.println("Please enter a username, must be 6 to 12 characters long");
+		System.out.println("Please enter a username, must be atleast 6 characters");
 		String tempUN = s.nextLine();
+		while(tempUN.length()<6)
+			{
+				System.out.println("Username must be over 6 characters in length");
+				System.out.println("Please try again");
+				tempUN = s.nextLine();
+			}
+		if(tempUN.length()>=6)
+		{
+			
+			for(Account a: accounts)
+			{
+				
+				if(a.userN.equals(tempUN))
+				{
+					
+					existingAccount=true;
+				}
+			}
+			if(!existingAccount)
+			{
+				System.out.println("Please enter your password");
+				System.out.println("***Must be between 6 and 12 charters in length***");
+				String tempPass = s.nextLine();
+				if(tempPass.length()>=6&&tempPass.length()<=12)
+					{
+					System.out.println("Please enter you initial deposit ammount");
+					this.balance= Integer.parseInt(s.nextLine());
+					System.out.println("Thank you, account approval can take up to 24 hours");
+					
+					this.name= tempName;
+					this.lastName= tempLN;
+					this.username=tempUN;
+					this.password=tempPass;
+					
+					createAccount();
+					}else {
+						while(tempPass.length()<=6&&tempPass.length()>=12)
+						{
+							System.out.println("Password does not meet requirments, please try again");
+							System.out.println("***Must be between 6 and 12 charters in length***");
+							tempPass = s.nextLine();
+						}
+						System.out.println("Please enter you initial deposit ammount");
+						this.balance= Integer.parseInt(s.nextLine());
+						System.out.println("Thank you, account approval can take up to 24 hours");
+						
+						this.name= tempName;
+						this.lastName= tempLN;
+						this.username=tempUN;
+						this.password=tempPass;
+					}
+			}	
+			
+		}
 		
-		
-		//check to see if username exists 
-		System.out.println("Please enter your password (Must contain atleast 1 special character and be between 6 and 12 charters in length");
-		String tempPass = s.nextLine();
-		// check to see if pass word is correct
-		System.out.println("Please enter you initial deposit ammount");
-		this.balance= Integer.parseInt(s.nextLine());
-		System.out.println("Thank you, account approval can take up to 24 hours");
-		
-		
-		this.name= tempName;
-		this.lastName= tempLN;
-		this.username=tempUN;
-		this.password=tempPass;
-		
-		createAccount();
-		
-		
-//		for(Account obj: accounts)
-//		System.out.println(obj.balance);
+
 		
 		
 		}
 		else
 		{
-			System.out.println("Please enter second account holders fist name");
-			String tempJname = s.nextLine();
-			
-			System.out.println("Please enter second account holders last name");
-			String tempJlastname = s.nextLine();
-			
-			System.out.println("Please enter a username, must be 6 to 12 characters long");
+			System.out.println("Please enter joint account holder's first name");
+			String tempNameJ = s.nextLine();
+			System.out.println("Please enter joint account holder's last name");
+			String tempLastNameJ= s.nextLine();
+			System.out.println("Please enter a username, must be atleast 6 characters");
 			String tempUN = s.nextLine();
+			if(tempUN.length()>=6)
+			{
+				
+				for(Account a: accounts)
+				{
+					
+					if(a.userN.equals(tempUN))
+					{
+						
+						existingAccount=true;
+					}
+				}
+				if(!existingAccount)
+				{
+					System.out.println("Please enter your password");
+					System.out.println("***Must be between 6 and 12 charters in length***");
+					String tempPass = s.nextLine();
+					if(tempPass.length()>=6&&tempPass.length()<=12)
+						{
+						System.out.println("Please enter you initial deposit ammount");
+						this.balance= Integer.parseInt(s.nextLine());
+						System.out.println("Thank you, account approval can take up to 24 hours");
+						
+						this.name= tempName;
+						this.nameJ=tempNameJ;
+						this.lastName= tempLN;
+						this.lastNameJ=tempLastNameJ;
+						this.username=tempUN;
+						this.password=tempPass;
+						
+						createJointAccount();
+						}else {
+							while(tempPass.length()<=6&&tempPass.length()>=12)
+							{
+								System.out.println("Password does not meet requirments, please try again");
+								System.out.println("***Must be between 6 and 12 charters in length***");
+								tempPass = s.nextLine();
+							}
+							System.out.println("Please enter you initial deposit ammount");
+							this.balance= Integer.parseInt(s.nextLine());
+							System.out.println("Thank you, account approval can take up to 24 hours");
+							
+							this.name= tempName;
+							this.nameJ=tempNameJ;
+							this.lastName= tempLN;
+							this.lastNameJ=tempLastNameJ;
+							this.username=tempUN;
+							this.password=tempPass;
+							createJointAccount();
+						}
+				}	
+				
+			}
 			
-			
-			//check to see if username exists 
-			System.out.println("Please enter your password (Must contain atleast 1 special character and be between 6 and 12 charters in length");
-			String tempPass = s.nextLine();
-			// check to see if pass word is correct
-			System.out.println("Please enter you initial deposit ammount");
-			this.balance= Integer.parseInt(s.nextLine());
-			System.out.println("Thank you, account approval can take up to 24 hours");
-			
-			this.name= tempName;
-			this.lastName=tempLN;
-			this.username=tempUN;
-			this.password=tempPass;
-			this.nameJ=tempJname;
-			this.lastNameJ=tempJlastname;
-			
-			createJointAccount();
-			
-			for(Account obj: accounts)
-				System.out.println(obj.balance);
-		}
-		
-		return;
 	}
 	
-	
+	}
 }

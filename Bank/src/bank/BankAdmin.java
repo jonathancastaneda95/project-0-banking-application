@@ -63,6 +63,13 @@ public class BankAdmin extends Data{
 						System.out.println("Account number already exists, please try again");
 						System.out.println("Please asign a 6 digit account number");
 						tempAN = aA.nextLine();
+						for(Account loop:accounts)
+						{
+							if(loop.accountNumber.equals(tempAN))
+									{
+										tempAN=an.accountNumber;
+									}
+						}
 					}
 				}
 				

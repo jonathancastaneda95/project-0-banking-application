@@ -5,13 +5,13 @@ import java.util.Scanner;
 
 public class Main {
 public static void main(String[] args) {
-	Data.deserialize();
+	//Data.deserialize();
 	Scanner s = new Scanner(System.in);
-//	Account a = new Account("Jonathan", "Castaneda", "jcstn", "password", 500, true, "123456");
-//	Data.accounts.add(a);
-//	Account b = new Account("Jamie", "Mullins", "jmullins", "password", 200, true, "654321");
-//	Data.accounts.add(b);
-//	Data.serialize();
+	Account a = new Account("Jonathan", "Castaneda", "jcastaneda", "password", 500, true, "123456");
+	Data.accounts.add(a);
+	Account b = new Account("Jamie", "Mullins", "jmullins", "password", 200, true, "654321");
+	Data.accounts.add(b);
+	Data.serialize();
 	
 	try {
 	while(true)
