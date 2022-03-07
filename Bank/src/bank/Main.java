@@ -12,7 +12,7 @@ public static void main(String[] args) {
 //	Account b = new Account("Jamie", "Mullins", "jmullins", "password", 200, true, "654321");
 //	Data.accounts.add(b);
 //	Data.serialize();
-	
+	Menu.startUp();
 	try {
 	while(true)
 	{

@@ -21,16 +21,9 @@ public class AccountLogin extends Data {
 			if (tempUN.equals(log.userN)&&tempPass.equals(log.getPassword()))
 			{
 			if(log.approved) {
-				System.out.println("Please choose from the following options");
-				System.out.println("___________________________________");
-				System.out.println("1: Print History");
-				System.out.println("2: Withdraw from an account");
-				System.out.println("3: Deposit into account");
-				System.out.println("4: Print account info ");
-				System.out.println("5: Transfer funds");
-				System.out.println("___________________________________");
+				
 
-
+				Menu.loginOptions();
 				
 				String option = loginScan.nextLine();
 				
@@ -83,6 +76,7 @@ public class AccountLogin extends Data {
 							}
 						}
 					}
+				case "6":return;
 				case "4":
 					Menu.listAccountInfo(log);
 

@@ -1,13 +1,18 @@
 package bank;
 
 public class Menu {
-
-public static void mainOptions()
+	
+public static void startUp()
 {
 	System.out.println("***************************");
 	System.out.println("*******Welcome!************");
 	System.out.println("***Project 0 Banking*******");
 	System.out.println("***************************");
+}
+
+public static void mainOptions()
+{
+
 
 
 
@@ -53,5 +58,17 @@ public static void employeeOptions()
 	System.out.println("1: Approve account");
 	System.out.println("2: to view account info");
 	System.out.println("__________________________________");
+}
+public static void loginOptions()
+{
+	System.out.println("Please choose from the following options");
+	System.out.println("___________________________________");
+	System.out.println("1: Print History");
+	System.out.println("2: Withdraw from an account");
+	System.out.println("3: Deposit into account");
+	System.out.println("4: Print account info ");
+	System.out.println("5: Transfer funds");
+	System.out.println("6: Exit to main menu");
+	System.out.println("___________________________________");
 }
 }
