@@ -84,17 +84,7 @@ public class AccountLogin extends Data {
 						}
 					}
 				case "4":
-					System.out.println("____________________________________________________");
-					System.out.println(log.name);
-					System.out.println("Name: " + log.name);
-					System.out.println("Last name: " + log.lastName);
-					System.out.println("Name of Joint holder: " + log.nameJoint);
-					System.out.println("Last Name of Joint holder: "+log.lastNameJoint);
-					System.out.println("Account number: "+log.accountNumber);
-					System.out.println("Account balance: "+log.balance);
-					System.out.println("Account Approved?: "+log.approved);
-					System.out.println("Account username: "+log.userN);
-					System.out.println("____________________________________________________");
+					Menu.listAccountInfo(log);
 
 						return;
 				case "5":

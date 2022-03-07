@@ -20,14 +20,7 @@ public class BankAdmin extends Data{
 			System.out.println("System is checking");
 			if (ap.name.equals(tempName) && ap.lastName.equals(tempLastName))
 			{
-				System.out.println("Name: " + ap.name);
-				System.out.println("Last name: " + ap.lastName);
-				System.out.println("Name of Joint holder: " + ap.nameJoint);
-				System.out.println("Last Name of Joint holder: "+ap.lastNameJoint);
-				System.out.println("Account number: "+ap.accountNumber);
-				System.out.println("Account balance: "+ap.balance);
-				System.out.println("Account Approved?: "+ap.approved);
-				System.out.println("Account username: "+ap.userN);
+				Menu.listAccountInfo(ap);
 				return;
 
 			}
@@ -280,16 +273,7 @@ public class BankAdmin extends Data{
 	}
 	public static void runOptions(Scanner s)
 	{
-		System.out.println("Please choose from the following options");
-		
-		System.out.println("_______________________________");
-		System.out.println("1: Approve Account");
-		System.out.println("2: Withdraw from an account");	
-		System.out.println("3: Deposit into an account");
-		System.out.println("4: Transfer funds");
-		System.out.println("5:1 View account info");
-		System.out.println("6: Delete account");
-		System.out.println("_______________________________");
+		Menu.adminOptions();
 		String option = s.nextLine();
 		
 		switch(option)
