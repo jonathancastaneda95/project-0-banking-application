@@ -70,7 +70,7 @@ public class AccountLogin extends Data {
 							if(tempD>0) {
 							log.deposit(tempD);
 							log.history.add("Deposit :"+ String.valueOf(tempD)+" Balance: "+ String.valueOf(tempBalance));
-							//Data.serialize(log);
+							Data.serialize();
 
 							return;
 							}
