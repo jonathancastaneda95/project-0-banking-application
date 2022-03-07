@@ -90,6 +90,7 @@ public class BankAdmin extends Data{
 	}
 	public static void withdraw ()
 	{
+		System.out.println("***********************");
 		double tempBalance;
 		@SuppressWarnings("resource")
 		Scanner wd = new Scanner(System.in);
@@ -146,6 +147,8 @@ public class BankAdmin extends Data{
 	}
 	public static void deposit ()
 	{
+		System.out.println("***********************");
+
 		@SuppressWarnings("resource")
 		Scanner wd = new Scanner(System.in);
 		System.out.println("Please enter account number for the account you with to deposit into");
@@ -188,6 +191,8 @@ public class BankAdmin extends Data{
 	public static void transfer()
 	
 	{
+		System.out.println("***********************");
+
 		boolean  firstAccountFound =false;
 		@SuppressWarnings("resource")
 		Scanner tra=new Scanner(System.in);
@@ -298,6 +303,8 @@ public class BankAdmin extends Data{
 	}
 	public static void deleteAccount()
 	{
+		System.out.println("***********************");
+
 		@SuppressWarnings("resource")
 		Scanner aA = new Scanner(System.in);
 		System.out.println("Please enter the first name for the account holder");

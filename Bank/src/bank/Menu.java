@@ -56,7 +56,7 @@ public static void employeeOptions()
 	System.out.println("Please choose from the following options");
 	System.out.println("__________________________________");
 	System.out.println("1: Approve account");
-	System.out.println("2: to view account info");
+	System.out.println("2: View account info");
 	System.out.println("__________________________________");
 }
 public static void loginOptions()

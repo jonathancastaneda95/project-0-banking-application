@@ -97,8 +97,7 @@ public class AccountLogin extends Data {
 							log.history.add("Transfer out of :"+ String.valueOf(transferAmount)+" Balance: "+ String.valueOf(log.balance));
 							tto.balance = tto.balance+transferAmount;
 							tto.history.add("Transfer in of :"+ String.valueOf(transferAmount)+" Balance: "+ String.valueOf(tto.balance));
-							System.out.println("The new balance for " + tto.name +" " + tto.lastName + "is: " + tto.balance);
-							System.out.println("The new balance for " +log.name +": " + log.balance)  ;
+							System.out.println("The new balance for " +log.name +" "+log.lastName +" is: " + log.balance)  ;
 							Data.serialize();
 
 							return;
